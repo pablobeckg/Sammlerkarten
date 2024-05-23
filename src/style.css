@@ -6,11 +6,40 @@ body {
     background-color: aquamarine;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+.cards {
+    display: grid;
+    grid: auto-flow / 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
 }
+
+form {
+    display: grid;
+    row-gap: 10px;
+    grid-template-columns:repeat(2, 1fr);
+    
+    grid-template-rows:repeat(7, 1fr);
+}
+
+.parent {
+    display:grid;
+    
+    grid-template-columns:repeat(2, 1fr);
+    
+    grid-template-rows:repeat(8, 1fr);
+    
+    
+    }
+    
+    #firstName{ grid-area:1 / 1 / 2 / 2;}
+    #lastName{ grid-area:1 / 2 / 2 / 3;}
+    #stageName{ grid-area:2 / 1 / 3 / 3;}
+    #albums{ grid-area:3 / 1 / 4 / 2;}
+    #topTen{ grid-area:3 / 2 / 4 / 3;}
+    #netWorth{ grid-area:4 / 1 / 5 / 2;}
+    #age{ grid-area:4 / 2 / 5 / 3;}
+    #area{ grid-area:5 / 1 / 7 / 3;}
+    #url{grid-area:7 / 1 / 8 / 3;}
+
 
 input {
     background-color: transparent;
@@ -38,9 +67,23 @@ textarea {
     gap: 10px;
     justify-content: space-between;
     padding: 10px;
+    margin-bottom: 240px;
+}
+
+.error-message {
+    color: red;
+    text-align: center;
+    grid-area:8 / 1 / 9 / 3;
 }
 
 button {
     background-color: rgb(162, 171, 224);
     border: none;
+    height: 30px;
+    grid-area: 9 / 1 / 10 / 3;
+}
+
+h3 {
+    color: white;
+    padding-left: 20px;
 }

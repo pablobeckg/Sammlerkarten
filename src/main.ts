@@ -20,25 +20,23 @@ const topTen = document.getElementById("topTen") as HTMLInputElement;
 const netWorth = document.getElementById("netWorth") as HTMLInputElement;
 const age = document.getElementById("age") as HTMLInputElement;
 const url = document.getElementById("url") as HTMLInputElement;
-const formularSubmit = document.getElementById("formular");
+const formularSubmit = document.getElementById("formular") as HTMLFormElement;
+const cardErrorOutput = document.getElementById('error-text') as HTMLDivElement;
 
 formularSubmit?.addEventListener('submit', (event: Event) => {
-    event.preventDefault();
-   // bookErrorOutput.innerHTML = '';
+  event.preventDefault();
+  cardErrorOutput.innerHTML = '';
   
-  
-    const newCard = createCard();
-    console.log(newCard);
-    const errorMessage = validateCard(newCard);
-    console.log(errorMessage);
-    // if (errorMessage === '') {
+  const newCard = createCard();
 
+  const errorMessage = validateCard(newCard);
+  if (errorMessage === '') {
     addCardToArray(newCard);
     addCardToOutput(newCard);
-    //   bookForm.reset();
-    // } else {
-    //   bookErrorOutput.innerHTML = errorMessage;
-    // }
+    formularSubmit.reset();
+    } else {
+    cardErrorOutput.innerHTML = errorMessage;
+    }
   });
 
   function createCard(): Card {
@@ -63,6 +61,12 @@ formularSubmit?.addEventListener('submit', (event: Event) => {
   function validateCard(card: Card): string {
     if (!card.firstName || !card.lastName || !card.stageName || !card.albums || !card.topTen || !card.netWorth || !card.age || !card.url) {
       return 'All fields are required';
+    }
+    if (!/^[\p{L}]+$/u.test(card.firstName)) {
+      return 'First name must be made of letters';
+    }
+    if (!/^[\p{L}]+$/u.test(card.lastName)) {
+      return 'Last name muss be made of letters'
     }
     if (card.albums <= 0 || card.albums >= 50) {
       return 'Albums must be between 0 and 50';
@@ -108,4 +112,26 @@ formularSubmit?.addEventListener('submit', (event: Event) => {
     ageElement.innerText = `Age: 
     ${age.value}`
     infoDivElement.appendChild(ageElement);
-  }
+    
+    const nameElement = document.createElement('h3');
+    nameElement.innerText = `${firstName.value}`
+    cardDivElement.appendChild(nameElement);
+
+    const LastNameElement = document.createElement('h3');
+    LastNameElement.innerText = `${lastName.value}`
+    cardDivElement.appendChild(LastNameElement);
+
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'DELETE';
+    deleteButton.addEventListener('click', () => {
+    const cardToDeleteIndex = Cards.findIndex(
+      (card: Card) => card.firstName === newCard.firstName && card.lastName === newCard.lastName
+      );
+      if (cardToDeleteIndex >= 0) {
+        Cards.splice(cardToDeleteIndex, 1);
+      }
+      cardDivElement.remove();
+    });
+    cardDivElement.appendChild(deleteButton);
+    }
+    

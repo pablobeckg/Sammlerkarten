@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/style.css">
     <title>Sammlerkarten</title>
@@ -18,10 +17,11 @@
       <input id="topTen" type="number" placeholder="How many top 10 Singles">
       <input id="netWorth" type="number" placeholder="Net worth in EUR">
       <input id="age" type="number" placeholder="How old is this person">
-      <textarea name="" id=""></textarea>
+      <textarea name="" id="area"></textarea>
       <input id="url" type="text" placeholder="Image URL">
+      <div id="error-text" class="error-message"></div>
       <button id="submit" type="submit">Add</button>
     </form>
-    <script type="module" src="./src/main.js"></script>
+    <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
