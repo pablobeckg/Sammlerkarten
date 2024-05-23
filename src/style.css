@@ -1,0 +1,46 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: aquamarine;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+input {
+    background-color: transparent;
+}
+
+input::placeholder {
+    color: black;
+}
+
+textarea {
+    background-color: transparent;
+}
+
+.imageDiv {
+    width: 300px;
+    height: 450px;
+    background-size: cover;
+    background-position: center;
+    color: black;
+    box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+.infoDiv {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+button {
+    background-color: rgb(162, 171, 224);
+    border: none;
+}
