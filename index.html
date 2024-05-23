@@ -7,7 +7,6 @@
     <title>Sammlerkarten</title>
   </head>
   <body>
-    <div id="cards-container" class="cards"></div>
     <h1>Add a Card</h1>
     <form id="formular">
       <input id="firstName" type="text" placeholder="First Name">
@@ -22,6 +21,12 @@
       <div id="error-text" class="error-message"></div>
       <button id="submit" type="submit">Add</button>
     </form>
-    <script type="module" src="./src/main.ts"></script>
+    <div id="cards-container" class="cards"></div>
+    <div class="order-bttons">
+      <button id="save-all">Save all Cards</button>
+      <button id="load-cards">Load Cards</button>
+    </div>
+    
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
